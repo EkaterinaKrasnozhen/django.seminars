@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'myapp',
     'myapp2',
+    'myapp3',
 ]
 
 MIDDLEWARE = [
@@ -158,6 +159,11 @@ LOGGING = {
             'propagate': True,
         },
         'myapp2': {
+            'handlers': ['console', 'file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+        'myapp3': {
             'handlers': ['console', 'file'],
             'level': 'DEBUG',
             'propagate': True,
