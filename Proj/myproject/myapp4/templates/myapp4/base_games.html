@@ -1,0 +1,13 @@
+{% block content %}
+</head>
+<body>    
+    <h1> Игра: {{title}} </h1>
+    <h2> Результаты игр: </h2>
+    <ul>
+    {% for res in result %}
+        <li>{{ res }}</li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
+{% endblock %}

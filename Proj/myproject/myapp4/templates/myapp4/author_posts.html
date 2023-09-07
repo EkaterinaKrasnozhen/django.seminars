@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Шаблон с ветвлением</title>
+</head>
+<body>
+    <h1> Статьи автора: {{ author.name }}</h1>
+    <table>
+        {% for post in posts %}
+          {% if post.publish %}
+            <tr>
+                <td><a href="{% url 'posts' post.id %}">{{ post.title }}</a>
+            </tr>
+          {% endif %} 
+          <h1> {{ post.title }} </h1>
+            
+        {% endfor %}
+    </table>
+</body>
+</html>
