@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from random import randint
-from .models import Author, Post
-from .forms import GameForm, AuthorForm, PostForm
+from .models import Author, Post, Comment
+from .forms import GameForm, AuthorForm, PostForm, CommentForm
 
 rnd = randint
 
@@ -116,3 +116,18 @@ def post_form(request):
     else:
         form = PostForm()
     return render(request, 'myapp4/post_form.html', {'form': form})
+
+
+def comment_form(request):
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            author = form.cleaned_data['author']
+            post_id = form.cleaned_data['post']
+            post = Post.objects.filter(pk=post_id).first()
+            comment = form.cleaned_data['comment']
+            comment_ = Comment(author=author, post=post, comment=comment)
+            comment_.save()
+    else:
+        form = CommentForm()
+    return render(request, 'myapp4/comment_form.html', {'form': form})

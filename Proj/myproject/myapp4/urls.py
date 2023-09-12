@@ -1,6 +1,6 @@
 from django.urls import path
 from myapp4 import views
-from .views import index, about, coin, cube, rand_int, author_posts, post, gamer_form, author_form, post_form
+from .views import index, about, coin, cube, rand_int, author_posts, post, gamer_form, author_form, post_form, comment_form
 
 urlpatterns = [
     path('index/', index, name='index'),
@@ -13,4 +13,5 @@ urlpatterns = [
     path('game/', gamer_form, name='game_form'),
     path('author/add/', author_form, name='author_form'),
     path('post/add/', post_form, name='post_form'),
+    path('comment/', comment_form, name='comment_form'),
 ]

@@ -21,3 +21,11 @@ class Post(models.Model):
     def get_summary(self):
         words = self.content.split()
         return f'{" ".join(words[:12])}...'
+    
+    
+class Comment(models.Model):
+    author = models.ForeignKey(Author, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    comment = models.TextField()
+    created_at = models.DateField(auto_now=True)
+    chanched_at = models.DateField(null=True, default=None)

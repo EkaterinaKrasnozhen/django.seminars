@@ -1,5 +1,5 @@
 from django import forms
-from .models import Author
+from .models import Author, Post
 
 
 class GameForm(forms.Form):
@@ -16,3 +16,9 @@ class PostForm(forms.Form):
     title = forms.CharField(max_length=100)
     content = forms.CharField(widget=forms.TextInput())
     author = forms.ModelChoiceField(queryset= Author.objects.all())
+    
+    
+class CommentForm(forms.Form):
+    author = forms.ModelChoiceField(label="Авторы", queryset=Author.objects.all())
+    post = forms.IntegerField()
+    comment = forms.CharField(widget=forms.Textarea)
